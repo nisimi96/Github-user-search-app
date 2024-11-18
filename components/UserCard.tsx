@@ -21,13 +21,20 @@ interface UserData {
   }
   
   interface UserCardProps {
-    userData: UserData;
+
+    userData: UserData | null;
+
     theme: 'light' | 'dark';
-  }
+
+}
 
 const UserCard = (props: UserCardProps) => {
+  if (!props.userData) {
+    return null;
+  }
+
   return (
-    <div className={`mt-6 p-4  rounded-lg container flex flex-col ${props.theme === 'light' ? 'bg-[#fefefe]' : 'bg-[#1E2A47]'} min-w-[350px] mx-auto`}>
+    <div className={`mt-6 py-4 px-4 rounded-lg flex flex-col ${props.theme === 'light' ? 'bg-[#fefefe]' : 'bg-[#1E2A47]'} w-full max-w-md mx-auto`}>
         <div className='flex gap-5 items-start container px-[2%] flex-wrap'>
             <Image
                 src={props.userData.avatar_url}

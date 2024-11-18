@@ -1,10 +1,18 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  output: 'export', // Enables static export
-  basePath: '/your-repo-name', // Replace with your repository name
-  trailingSlash: true, // Ensures correct paths for GitHub Pages
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  trailingSlash: true,
+  output: 'export', // Export as static site
+  // Optimize external images for the Next.js Image component
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com', // Example: GitHub avatars
+        pathname: '/**',
+      },
+    ],
+    unoptimized: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

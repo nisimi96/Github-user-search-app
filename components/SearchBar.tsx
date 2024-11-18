@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -23,6 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, placeholder = 'Search..
   };
 
   return (
+    <div className='container'>
     <form onSubmit={handleSubmit} className={`${theme === 'light' ? 'bg-[#fefefe]' : 'bg-[#1E2A47]'} flex items-center gap-2 mt-4 py-[10px] px-[32px] rounded-md`}>
         <Image src="./icon-search.svg" alt="search icon" className='mr-10 lg:mr-20 md:mr-15' width={29} height={29}/>
         <input
@@ -39,6 +41,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, placeholder = 'Search..
             Search
         </button>
     </form>
+    </div>
   );
 };
 
